@@ -18,10 +18,12 @@
 
 FROM python:3.7
 
-RUN mkdir /hm1
-WORKDIR /hm1
-ADD . /hm1/
+RUN mkdir /app
+RUN chmod -R 755 /app
+COPY * /app/
+WORKDIR /app
+# ADD . /app/
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
-CMD ["python", "/hm1/main.py"]
+EXPOSE 8080
+CMD ["python", "/app/main.py"]
